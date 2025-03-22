@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* font-family: "satoshi";  */
+}
+
+/* satochi fonts  */
+
+@font-face {
+  font-family: "satoshi";
+  src: url("../../public/fonts/Satoshi-cdnfonts/Satoshi-Bold.otf")
+    format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "satoshi";
+  src: url("../../public/fonts/Satoshi-cdnfonts/Satoshi-Regular.otf")
+    format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "satoshi";
+  src: url("../../public/fonts/Satoshi-cdnfonts/Satoshi-Italic.otf")
+    format("opentype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "satoshi";
+  src: url("../../public/fonts/Satoshi-cdnfonts/Satoshi-Light.otf")
+    format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* integral font  */
+
+@font-face {
+  font-family: "integral";
+  src: url("../../public/fonts/Integral-CF-Font-Family/Fontspring-DEMO-integralcf-regular.otf")
+    format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  background-color: #f0f0f0;
+  /* font-family: "satoshi";  */
+}
+
+/* cuatom utility classes  */
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
