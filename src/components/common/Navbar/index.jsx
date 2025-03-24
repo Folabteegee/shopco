@@ -94,30 +94,30 @@ export default function Navbar() {
 
             {/* Dropdown Content */}
             {isOpen && (
-              <div className="absolute left-0 mt-2 w-40 bg-gray-100 rounded-md shadow-lg">
+              <div className="absolute left-0 mt-2 w-60 bg-gray-100 rounded-md shadow-lg">
                 <a
                   href="/electronics"
                   className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
                 >
-                  Electronics
+                  Electronics Collection
                 </a>
                 <a
                   href="/mensclothing"
                   className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
                 >
-                  Men's Clothing
+                  Men's Collection
                 </a>
                 <a
                   href="/womensclothing"
                   className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
                 >
-                  Women's Clothing
+                  Women's Collection
                 </a>
                 <a
                   href="/jewelries"
                   className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
                 >
-                  Jewelries
+                  Jewelry Collection
                 </a>
               </div>
             )}

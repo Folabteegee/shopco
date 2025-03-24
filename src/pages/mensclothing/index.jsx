@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Stars from "@/icon/stars";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const MensClothing = () => {
+  const router = useRouter();
   const [shirts, setShirts] = useState([]);
   const [shoes, setShoes] = useState([]);
   const [watches, setWatches] = useState([]);
@@ -34,6 +36,10 @@ const MensClothing = () => {
     fetchData();
   }, []);
 
+  const handleProductClick = (id) => {
+    router.push(`/product-details/${id}`);
+  };
+
   const renderProducts = (title, products) => (
     <div>
       <h2 className="text-3xl mt-12 font-satoshi font-bold text-center">
@@ -48,7 +54,8 @@ const MensClothing = () => {
           return (
             <div
               key={product.id}
-              className="flex flex-col items-center min-w-[250px] md:min-w-[300px]"
+              className="flex flex-col items-center min-w-[250px] md:min-w-[300px] cursor-pointer"
+              onClick={() => handleProductClick(product.id)}
             >
               <Image
                 src={product.thumbnail}

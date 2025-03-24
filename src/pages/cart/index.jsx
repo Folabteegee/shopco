@@ -12,6 +12,7 @@ export default function Cartsection() {
           {/* Breadcrumb */}
           <div className="flex gap-3 text-sm md:text-base">
             <div>Home</div>
+            <div> &gt;</div>
             <div>Cart</div>
           </div>
 
@@ -32,9 +33,9 @@ export default function Cartsection() {
                     <Image
                       src={Frame32}
                       alt="cloth"
-                      width={80}
-                      height={80}
-                      className="rounded-2xl w-[80px] md:w-[100px]"
+                      width={150}
+                      height={150}
+                      className="rounded-2xl"
                     />
                     <div className="text-sm md:text-base">
                       <div className="font-semibold">

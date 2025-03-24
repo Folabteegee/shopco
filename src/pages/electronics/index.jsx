@@ -3,15 +3,16 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Stars from "@/icon/stars";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const Electronics = () => {
+  const router = useRouter();
   const [smartphones, setSmartphones] = useState([]);
   const [laptops, setLaptops] = useState([]);
   const [tablets, setTablets] = useState([]);
   const [smartwatches, setSmartwatches] = useState([]);
 
   useEffect(() => {
-    // Fetch all electronics-related products
     const fetchData = async () => {
       try {
         const [smartphonesRes, laptopsRes, tabletsRes, smartwatchesRes] =
@@ -34,6 +35,10 @@ const Electronics = () => {
     fetchData();
   }, []);
 
+  const handleProductClick = (id) => {
+    router.push(`/product-details/${id}`);
+  };
+
   const renderProducts = (title, products) => (
     <div>
       <h2 className="text-3xl mt-12 font-satoshi font-bold text-center">
@@ -48,7 +53,8 @@ const Electronics = () => {
           return (
             <div
               key={product.id}
-              className="flex flex-col items-center min-w-[250px] md:min-w-[300px]"
+              className="flex flex-col items-center min-w-[250px] md:min-w-[300px] cursor-pointer"
+              onClick={() => handleProductClick(product.id)}
             >
               <Image
                 src={product.thumbnail}
