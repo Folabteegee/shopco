@@ -8,10 +8,6 @@ import MainLayout from "@/layouts/MainLayout";
 export default function Home() {
   return (
     <MainLayout>
-      {/* <div className="mb-8 font-integral">Home page</div>
-      <Button variant="primary">Shop Now</Button>
-      <Button variant="secondary">Add to</Button>
-      <Button variant="primary">Add to</Button> */}
       <Herosection />
       <Newarrival />
       <Topselling />

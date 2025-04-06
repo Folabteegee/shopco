@@ -9,6 +9,7 @@ const Jewelry = () => {
   const router = useRouter();
   const [womensJewelry, setWomensJewelry] = useState([]);
   const [mensJewelry, setMensJewelry] = useState([]);
+  const [loading, setLoading] = useState(true); // Loader state
 
   useEffect(() => {
     // Fetch all jewelry-related products
@@ -23,6 +24,8 @@ const Jewelry = () => {
         setMensJewelry(mensJewelryRes.data.products);
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false); // Hide loader after fetching data
       }
     };
 
@@ -34,8 +37,8 @@ const Jewelry = () => {
   };
 
   const renderProducts = (title, products) => (
-    <div>
-      <h2 className="text-3xl mt-12 font-satoshi font-bold text-center">
+    <div key={title}>
+      <h2 className="text-3xl mt-12 font-integral font-bold text-center">
         {title}
       </h2>
       <div className="pt-6 flex overflow-x-auto scrollbar-hide space-x-8 px-4">
@@ -82,11 +85,21 @@ const Jewelry = () => {
 
   return (
     <MainLayout>
-      <div className="text-5xl mt-8 font-satoshi font-extrabold flex justify-center">
-        JEWELRY COLLECTION
-      </div>
-      {renderProducts("Women's Jewelry", womensJewelry)}
-      {renderProducts("Men's Jewelry", mensJewelry)}
+      <h1 className="text-4xl font-bold text-center p-9 font-integral mb-6">
+        JEWELRIES COLLECTION
+      </h1>
+
+      {/* Loader */}
+      {loading ? (
+        <div className="flex justify-center items-center h-64">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-black"></div>
+        </div>
+      ) : (
+        <>
+          {renderProducts("Womens Jewelry", womensJewelry)}
+          {renderProducts("Mens Jewelry", mensJewelry)}
+        </>
+      )}
     </MainLayout>
   );
 };

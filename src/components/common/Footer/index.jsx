@@ -8,10 +8,20 @@ function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="px-5 py-5 flex flex-col md:flex-row items-center justify-between bg-gray-100">
+    <footer className="p-20 max-md:p-10 flex flex-col md:flex-row items-center justify-between bg-gray-100">
+      <div>
+        <div className="font-integral  max-md:text-center text-3xl px-4 font-bold  md:text-3xl">
+          SHOP.CO
+        </div>
+        <div className=" text-gray-500 font-satoshi p-4">
+          We have clothes that suits your style and which <br />
+          you're proud to wear. From women to men
+        </div>
+      </div>
       {/* Copyright Text */}
       <div className="font-satoshi text-gray-500 text-center md:text-left mb-3 md:mb-0">
-        Shop.co &copy; 2000-{currentYear}, All Rights Reserved
+        Shop.co &copy; 2000-{currentYear}, All Rights Reserved.
+        <br /> Built by Taiwo Afolabi and Kehinde Afolabi.
       </div>
 
       {/* Payment Icons */}

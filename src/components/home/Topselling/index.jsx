@@ -1,9 +1,32 @@
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Stars from "@/icon/stars";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function Topselling() {
+  const router = useRouter();
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://dummyjson.com/products")
+      .then((res) => {
+        const topSellingProducts = res.data.products
+          .sort((a, b) => b.rating - a.rating) // Sort by highest rating
+          .slice(0, 10); // Get top 4 products
+
+        setProducts(topSellingProducts);
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
+  const handleProductClick = (id) => {
+    router.push(`/product-details/${id}`);
+  };
+
   return (
-    <div className="bg-white pb-10 px-4 md:px-20">
+    <div className="bg-white pb-5 px-4 md:px-20">
       {/* Title */}
       <div className="text-3xl md:text-5xl font-bold font-integral pt-10 md:pt-20 text-center">
         TOP SELLING
@@ -11,80 +34,55 @@ export default function Topselling() {
 
       {/* Scrollable Products Container */}
       <div className="pt-10 md:pt-20 flex overflow-x-auto scrollbar-hide space-x-8 px-4">
-        {/* Product Card List */}
-        {[
-          {
-            img: "/images/Frame 32.png",
-            name: "Vertical Striped Shirt",
-            rating: "5.0",
-            price: "$120",
-            oldPrice: "$232",
-            discount: "-20%",
-          },
-          {
-            img: "/images/Frame 33.png",
-            name: "Casual Hoodie",
-            rating: "4.8",
-            price: "$140",
-            oldPrice: "$280",
-            discount: "-30%",
-          },
-          {
-            img: "/images/Frame 34.png",
-            name: "Classic Jeans",
-            rating: "4.6",
-            price: "$99",
-            oldPrice: "$180",
-            discount: "-45%",
-          },
-          {
-            img: "/images/Frame 35.png",
-            name: "Slim Fit Chinos",
-            rating: "4.7",
-            price: "$110",
-            oldPrice: "$200",
-            discount: "-40%",
-          }, // Example extra product
-        ].map((product, index) => (
-          <div
-            key={index}
-            className="flex flex-col items-center min-w-[250px] md:min-w-[300px]"
-          >
-            <Image
-              src={product.img}
-              alt={product.name}
-              width={300}
-              height={200}
-              className="rounded-2xl w-full max-w-[300px]"
-            />
+        {products.map((product) => {
+          const discountedPrice = (
+            product.price *
+            (1 - product.discountPercentage / 100)
+          ).toFixed(2);
 
-            <div className="pt-5 text-lg text-center">
-              <div className="font-satoshi font-black">{product.name}</div>
-              <div className="flex justify-center items-center gap-2 font-satoshi text-sm pt-2">
-                <Stars />
-                <span>{product.rating}/5</span>
-              </div>
+          return (
+            <div
+              key={product.id}
+              className="flex flex-col items-center min-w-[250px] md:min-w-[300px] cursor-pointer"
+              onClick={() => handleProductClick(product.id)}
+            >
+              <Image
+                src={product.thumbnail}
+                alt={product.title}
+                width={300}
+                height={200}
+                className="rounded-2xl w-full max-w-[300px]"
+              />
 
-              {/* Price and Discount */}
-              <div className="pt-2 flex items-center justify-center gap-3 text-2xl">
-                <div className="font-satoshi font-black">{product.price}</div>
-                <div className="font-satoshi font-bold text-slate-400 line-through">
-                  {product.oldPrice}
+              <div className="pt-5 text-lg text-center">
+                <div className="font-satoshi font-black">{product.title}</div>
+                <div className="flex justify-center items-center gap-2 font-satoshi text-sm pt-2">
+                  <Stars />
+                  <span>{product.rating}/5</span>
                 </div>
-                <div className="rounded-full bg-pink-200 font-satoshi text-xs py-1 px-4 text-red-500">
-                  {product.discount}
+                <div className="font-satoshi pt-2 text-2xl font-black">
+                  <span className="line-through text-red-600">
+                    ${product.price}
+                  </span>{" "}
+                  <span className="text-black">${discountedPrice}</span>
+                  <div className="mt-2 bg-green-200 text-green-800 font-satoshi text-xs font-bold px-2  py-1 rounded-full">
+                    -{product.discountPercentage}% OFF
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* View All Button */}
-      <div className="pb-10 md:pb-20 font-satoshi text-center mt-10 md:mt-20">
-        <button className="rounded-full border border-gray-400 px-10 md:px-16 py-3 md:py-4 hover:bg-gray-100 transition">
+      <div className="border-b border-gray-300 pb-10 md:pb-20 font-satoshi text-center mt-10 md:mt-20">
+        <a
+          href="topselling"
+          className="rounded-full border border-gray-400 px-10 md:px-16 py-3 md:py-4 hover:bg-gray-100 transition"
+        >
           View All
-        </button>
+        </a>
       </div>
     </div>
   );

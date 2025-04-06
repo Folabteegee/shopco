@@ -11,6 +11,7 @@ const WomensClothing = () => {
   const [shoes, setShoes] = useState([]);
   const [bags, setBags] = useState([]);
   const [watches, setWatches] = useState([]);
+  const [loading, setLoading] = useState(true); // Loader state
 
   useEffect(() => {
     // Fetch all women's related products
@@ -29,6 +30,8 @@ const WomensClothing = () => {
         setWatches(watchesRes.data.products);
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false); // Hide loader after fetching data
       }
     };
 
@@ -40,8 +43,8 @@ const WomensClothing = () => {
   };
 
   const renderProducts = (title, products) => (
-    <div>
-      <h2 className="text-3xl mt-12 font-satoshi font-bold text-center">
+    <div key={title}>
+      <h2 className="text-3xl mt-12 font-integral font-bold text-center">
         {title}
       </h2>
       <div className="pt-6 flex overflow-x-auto scrollbar-hide space-x-8 px-4">
@@ -88,13 +91,23 @@ const WomensClothing = () => {
 
   return (
     <MainLayout>
-      <div className="text-5xl mt-8 font-satoshi font-extrabold flex justify-center">
-        WOMEN'S COLLECTION
-      </div>
-      {renderProducts("Dresses", dresses)}
-      {renderProducts("Shoes", shoes)}
-      {renderProducts("Bags", bags)}
-      {renderProducts("Watches", watches)}
+      <h1 className="text-4xl font-bold text-center p-9 font-integral mb-6">
+        WOMENS COLLECTION
+      </h1>
+
+      {/* Loader */}
+      {loading ? (
+        <div className="flex justify-center items-center h-64">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-black"></div>
+        </div>
+      ) : (
+        <>
+          {renderProducts("Dresses", dresses)}
+          {renderProducts("Shoes", shoes)}
+          {renderProducts("Bags", bags)}
+          {renderProducts("Watches", watches)}
+        </>
+      )}
     </MainLayout>
   );
 };

@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Calvinklein from "@/icon/Calvinklein";
 import Gucci from "@/icon/Gucci";
 import Prada from "@/icon/Prada";
@@ -6,14 +7,36 @@ import Versace from "@/icon/Versace";
 import Star from "@/icon/Star";
 import StarII from "@/icon/StarII";
 import Image from "next/image";
-import Heroimage from "../../../../public/images/Heroimage.png";
 import Heroimage2 from "../../../../public/images/Heroimage2.png";
 
 export default function Herosection() {
+  const [brandsCount, setBrandsCount] = useState(0);
+  const [productsCount, setProductsCount] = useState(0);
+  const [customersCount, setCustomersCount] = useState(0);
+
+  useEffect(() => {
+    const animateCount = (setter, finalValue, duration, step = 1) => {
+      let start = 0;
+      const stepTime = Math.abs(Math.floor(duration / (finalValue / step)));
+      const timer = setInterval(() => {
+        start += step;
+        setter(start);
+        if (start >= finalValue) {
+          setter(finalValue);
+          clearInterval(timer);
+        }
+      }, stepTime);
+    };
+
+    animateCount(setBrandsCount, 200, 2000, 2);
+    animateCount(setProductsCount, 2000, 2000, 50);
+    animateCount(setCustomersCount, 30000, 2000, 100); // Increase by 500 per step
+  }, []);
+
   return (
     <div>
       {/* Hero Section */}
-      <div className="flex flex-col md:flex-row justify-between items-center bg-[#F2F0F1] px-6 md:px-0">
+      <div className="flex flex-col md:flex-row mt-20 justify-between items-center bg-[#F2F0F1] px-6 md:px-0">
         {/* Left Section */}
         <div className="w-full md:w-1/2 text-center md:text-left py-10 md:py-0">
           <div className="font-integral font-black text-8xl max-md:text-5xl md:text-6xl px-4 md:px-20">
@@ -25,9 +48,11 @@ export default function Herosection() {
             style.
           </div>
           <div className="pt-6 md:pt-8 px-4 md:px-20">
-            <button className="font-satoshi hover:bg-slate-500 hover:text-black rounded-full bg-black text-white max-md:px-40 px-10 py-3">
-              Shop Now
-            </button>
+            <a href="/onsale">
+              <button className="font-satoshi hover:bg-slate-500 hover:text-black rounded-full bg-black text-white max-md:px-40 px-10 py-3">
+                Shop Now
+              </button>
+            </a>
           </div>
 
           {/* Stats Section */}
@@ -35,16 +60,16 @@ export default function Herosection() {
             <div className="max-md:flex-row gap-5 flex flex-row">
               <div className="flex flex-col items-center md:items-start border-r-2 border-gray-300 pr-5">
                 <div className="font-black text-3xl md:text-4xl font-satoshi">
-                  200+
+                  {brandsCount}+
                 </div>
                 <div className="font-satoshi text-gray-500 pt-2 text-sm md:text-base">
                   International Brands
                 </div>
               </div>
 
-              <div className="flex flex-col items-center md:items-start  border-r-2 border-gray-300 pr-5 max-md:border-none">
+              <div className="flex flex-col items-center md:items-start border-r-2 border-gray-300 pr-5 max-md:border-none">
                 <div className="font-black text-3xl md:text-4xl font-satoshi">
-                  2,000+
+                  {productsCount}+
                 </div>
                 <div className="font-satoshi text-gray-500 pt-2 text-sm md:text-base">
                   High-Quality Products
@@ -54,7 +79,7 @@ export default function Herosection() {
 
             <div className="flex flex-col items-center md:items-start">
               <div className="font-black text-3xl md:text-4xl font-satoshi">
-                30,000+
+                {customersCount}+
               </div>
               <div className="font-satoshi text-gray-500 pt-2 text-sm md:text-base">
                 Happy Customers

@@ -7,11 +7,9 @@ import { useRouter } from "next/router";
 
 const categories = [
   "fragrances",
-  "skincare",
   "groceries",
   "home-decoration",
   "furniture",
-  "lighting",
   "laptops",
   "smartphones",
   "mens-shirts",
@@ -28,6 +26,7 @@ const categories = [
 const OnSale = () => {
   const router = useRouter();
   const [products, setProducts] = useState({});
+  const [loading, setLoading] = useState(true); // Loader state
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,6 +44,8 @@ const OnSale = () => {
         setProducts(newProducts);
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false); // Hide loader after fetching data
       }
     };
 
@@ -57,7 +58,7 @@ const OnSale = () => {
 
   const renderProducts = (title, products) => (
     <div key={title}>
-      <h2 className="text-3xl mt-12 font-satoshi font-bold text-center">
+      <h2 className="text-3xl mt-12 font-integral font-bold text-center">
         {title}
       </h2>
       <div className="pt-6 flex overflow-x-auto scrollbar-hide space-x-8 px-4">
@@ -104,11 +105,29 @@ const OnSale = () => {
 
   return (
     <MainLayout>
-      <div className="text-5xl mt-8 font-satoshi font-extrabold flex justify-center">
-        ON SALE
+      {/* breadcrumb */}
+      <div className="flex font-satoshi mt-16 font-semibold p-6 gap-3">
+        <div className="flex items-center gap-1">
+          <div>Home</div> <div> &gt; </div>
+        </div>
+        <div className="flex items-center gap-1">
+          <div>On Sale</div>
+        </div>
       </div>
-      {Object.entries(products).map(([category, items]) =>
-        renderProducts(category.replace("-", " ").toUpperCase(), items)
+
+      <h1 className="text-4xl font-bold text-center p-9 font-integral mb-6">
+        On Sale
+      </h1>
+
+      {/* Loader */}
+      {loading ? (
+        <div className="flex justify-center items-center h-64">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-black"></div>
+        </div>
+      ) : (
+        Object.entries(products).map(([category, items]) =>
+          renderProducts(category.replace("-", " ").toUpperCase(), items)
+        )
       )}
     </MainLayout>
   );

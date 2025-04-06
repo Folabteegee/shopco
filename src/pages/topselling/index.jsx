@@ -5,50 +5,36 @@ import Stars from "@/icon/stars";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-const Electronics = () => {
+const TopSelling = () => {
   const router = useRouter();
-  const [smartphones, setSmartphones] = useState([]);
-  const [laptops, setLaptops] = useState([]);
-  const [tablets, setTablets] = useState([]);
-  const [smartwatches, setSmartwatches] = useState([]);
-  const [loading, setLoading] = useState(true); // Loader state
+  const [topSelling, setTopSelling] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchTopSelling = async () => {
       try {
-        const [smartphonesRes, laptopsRes, tabletsRes, smartwatchesRes] =
-          await Promise.all([
-            axios.get("https://dummyjson.com/products/category/smartphones"),
-            axios.get("https://dummyjson.com/products/category/laptops"),
-            axios.get("https://dummyjson.com/products/category/tablets"),
-            axios.get("https://dummyjson.com/products/category/smartwatches"),
-          ]);
-
-        setSmartphones(smartphonesRes.data.products);
-        setLaptops(laptopsRes.data.products);
-        setTablets(tabletsRes.data.products);
-        setSmartwatches(smartwatchesRes.data.products);
+        const response = await axios.get(
+          "https://dummyjson.com/products?limit=20&sortBy=sales"
+        );
+        setTopSelling(response.data.products);
       } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false); // Hide loader after fetching data
+        console.error("Error fetching top-selling products:", error);
       }
     };
 
-    fetchData();
+    fetchTopSelling();
   }, []);
 
   const handleProductClick = (id) => {
     router.push(`/product-details/${id}`);
   };
 
-  const renderProducts = (title, products) => (
-    <div key={title}>
-      <h2 className="text-3xl mt-12 font-integral font-bold text-center">
-        {title}
-      </h2>
+  return (
+    <MainLayout>
+      <div className="text-5xl mt-8 font-satoshi font-extrabold flex justify-center">
+        TOP SELLING PRODUCTS
+      </div>
       <div className="pt-6 flex overflow-x-auto scrollbar-hide space-x-8 px-4">
-        {products.map((product) => {
+        {topSelling.map((product) => {
           const discountedPrice = (
             product.price *
             (1 - product.discountPercentage / 100)
@@ -86,29 +72,8 @@ const Electronics = () => {
           );
         })}
       </div>
-    </div>
-  );
-
-  return (
-    <MainLayout>
-      <h1 className="text-4xl font-bold text-center p-9 font-integral mb-6">
-        ELECTRONICS COLLECTION
-      </h1>
-
-      {/* Loader */}
-      {loading ? (
-        <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-black"></div>
-        </div>
-      ) : (
-        <>
-          {renderProducts("Smartphones", smartphones)}
-          {renderProducts("Laptops", laptops)}
-          {renderProducts("Tablets", tablets)}
-        </>
-      )}
     </MainLayout>
   );
 };
 
-export default Electronics;
+export default TopSelling;

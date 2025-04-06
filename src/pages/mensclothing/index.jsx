@@ -11,6 +11,7 @@ const MensClothing = () => {
   const [shoes, setShoes] = useState([]);
   const [watches, setWatches] = useState([]);
   const [sunglasses, setSunglasses] = useState([]);
+  const [loading, setLoading] = useState(true); // Loader state
 
   useEffect(() => {
     // Fetch all men's related products
@@ -30,6 +31,8 @@ const MensClothing = () => {
         setSunglasses(sunglassesRes.data.products);
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false); // Hide loader after fetching data
       }
     };
 
@@ -41,8 +44,8 @@ const MensClothing = () => {
   };
 
   const renderProducts = (title, products) => (
-    <div>
-      <h2 className="text-3xl mt-12 font-satoshi font-bold text-center">
+    <div key={title}>
+      <h2 className="text-3xl mt-12 font-integral font-bold text-center">
         {title}
       </h2>
       <div className="pt-6 flex overflow-x-auto scrollbar-hide space-x-8 px-4">
@@ -76,7 +79,7 @@ const MensClothing = () => {
                     ${product.price}
                   </span>
                 </div>
-                <div className="mt-2 bg-green-200 text-green-800 font-satoshi text-xs font-bold px-2  py-1 rounded-full">
+                <div className="mt-2 bg-green-200 text-green-800 font-satoshi text-xs font-bold px-2 py-1 rounded-full">
                   -{product.discountPercentage}% OFF
                 </div>
               </div>
@@ -89,13 +92,23 @@ const MensClothing = () => {
 
   return (
     <MainLayout>
-      <div className="text-5xl mt-8 font-satoshi font-extrabold flex justify-center">
-        MEN'S COLLECTION
-      </div>
-      {renderProducts("Shirts", shirts)}
-      {renderProducts("Shoes", shoes)}
-      {renderProducts("Watches", watches)}
-      {renderProducts("Sunglasses", sunglasses)}
+      <h1 className="text-4xl font-bold text-center p-9 font-integral mb-6">
+        MENS COLLECTION
+      </h1>
+
+      {/* Loader */}
+      {loading ? (
+        <div className="flex justify-center items-center h-64">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-black"></div>
+        </div>
+      ) : (
+        <>
+          {renderProducts("Shirts", shirts)}
+          {renderProducts("Shoes", shoes)}
+          {renderProducts("Watches", watches)}
+          {renderProducts("Sunglasses", sunglasses)}
+        </>
+      )}
     </MainLayout>
   );
 };
