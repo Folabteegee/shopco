@@ -3,6 +3,7 @@ import Mastercard from "@/icons/mastercard";
 import Paypal from "@/icons/paypal";
 import Pay from "@/icons/pay";
 import Gpay from "@/icons/gpay";
+import Link from "next/link";
 
 function Footer() {
   const currentYear = new Date().getFullYear();
@@ -21,7 +22,24 @@ function Footer() {
       {/* Copyright Text */}
       <div className="font-satoshi text-gray-500 text-center md:text-left mb-3 md:mb-0">
         Shop.co &copy; 2000-{currentYear}, All Rights Reserved.
-        <br /> Built by Taiwo Afolabi and Kehinde Afolabi.
+        <br />{" "}
+        <p className="">
+          Built by{" "}
+          <Link
+            href="https://www.linkedin.com/in/taiwo-afolabi-b5b827227"
+            className="text-black underline hover:text-blue-400"
+          >
+            Taiwo Afolabi{" "}
+          </Link>{" "}
+          and{" "}
+          <Link
+            href="https://www.linkedin.com/in/kehinde-afolabi-3bab072b2"
+            className="text-black underline hover:text-blue-400"
+          >
+            Kehinde Afolabi.{" "}
+          </Link>
+          <br />
+        </p>
       </div>
 
       {/* Payment Icons */}
