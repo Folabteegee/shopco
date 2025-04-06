@@ -1,4 +1,4 @@
-+-"use client";
+"use client";
 import MainLayout from "@/layouts/MainLayout";
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
