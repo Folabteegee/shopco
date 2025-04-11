@@ -85,7 +85,7 @@ const Jewelry = () => {
 
   return (
     <MainLayout>
-      <h1 className="text-4xl font-bold text-center p-9 font-integral mb-6">
+      <h1 className="text-4xl font-bold text-center mt-24 p-9 font-integral mb-6">
         JEWELRIES COLLECTION
       </h1>
 

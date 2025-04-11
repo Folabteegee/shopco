@@ -36,7 +36,7 @@ export default function Herosection() {
   return (
     <div>
       {/* Hero Section */}
-      <div className="flex flex-col md:flex-row mt-20 justify-between items-center bg-[#F2F0F1] px-6 md:px-0">
+      <div className="flex flex-col md:flex-row mt-28 justify-between items-center  bg-[#F2F0F1] px-6 md:px-0">
         {/* Left Section */}
         <div className="w-full md:w-1/2 text-center md:text-left py-10 md:py-0">
           <div className="font-integral font-black text-8xl max-md:text-5xl md:text-6xl px-4 md:px-20">
