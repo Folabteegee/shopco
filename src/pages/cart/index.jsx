@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import MainLayout from "@/layouts/MainLayout";
 import Image from "next/image";
 import Delete from "@/icon/Delete";
+import Arrow from "@/icon/arrow";
 import { useRouter } from "next/router"; // Importing useRouter
 
 export default function Cartsection() {
@@ -165,12 +166,15 @@ export default function Cartsection() {
 
             {/* Checkout Button */}
             <div className="p-2 md:p-4">
-              <button
+              <div
                 onClick={() => router.push("/checkout")} // Navigate to the checkout page
-                className="w-full rounded-3xl px-4 py-3 text-white bg-black text-sm md:text-base"
+                className="w-full flex gap-4 justify-center cursor-pointer rounded-full px-4 py-5 text-white bg-black text-sm md:text-base"
               >
-                Go to checkout
-              </button>
+                <button className="text-lg">Go to checkout</button>
+                <div>
+                  <Arrow />
+                </div>
+              </div>
             </div>
           </div>
         </div>
