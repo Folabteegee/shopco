@@ -1,12 +1,12 @@
 "use client";
 import MainLayout from "@/layouts/MainLayout";
 import { useEffect, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/router";
 import Image from "next/image";
 
 const BrandProductsPage = () => {
-  const { brand } = useParams();
   const router = useRouter();
+  const { brand } = router.query; // ✅ Correct way to access dynamic param in Pages Router
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -29,7 +29,16 @@ const BrandProductsPage = () => {
           skip += limit;
         }
 
-        const filteredProducts = allProducts.filter((p) => p.brand === brand);
+        console.log(
+          "Fetched brands:",
+          allProducts.map((p) => p.brand)
+        );
+        console.log("URL param brand:", brand);
+
+        const filteredProducts = allProducts.filter(
+          (p) => p.brand?.toLowerCase().trim() === brand?.toLowerCase().trim()
+        );
+
         setProducts(filteredProducts);
       } catch (error) {
         console.error("Error fetching brand products:", error);
@@ -49,8 +58,8 @@ const BrandProductsPage = () => {
 
   return (
     <MainLayout>
-      <div className="container font-satoshi mx-auto mt-16 p-6">
-        <h1 className="text-3xl font-bold text-center font-integral mb-6">
+      <div className="container font-satoshi mx-auto mt-20 p-6">
+        <h1 className="text-3xl font-bold text-center font-integral mb-6 capitalize">
           Products from {brand}
         </h1>
         {loading ? (
