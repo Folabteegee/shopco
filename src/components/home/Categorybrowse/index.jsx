@@ -1,4 +1,8 @@
 import Image from "next/image";
+import gadgets from "../../../../public/images/gadgets.png";
+import men from "../../../../public/images/men.png";
+import women2 from "../../../../public/images/women2.png";
+import jewelries from "../../../../public/images/jewelries.png";
 
 export default function Categorybrowse() {
   return (
@@ -17,7 +21,7 @@ export default function Categorybrowse() {
               Electronics
             </p>
             <Image
-              src="/images/gadgets.jpg"
+              src={gadgets}
               alt="Electronics"
               width={500}
               height={300}
@@ -31,7 +35,7 @@ export default function Categorybrowse() {
               Men's Clothing
             </p>
             <Image
-              src="/images/men.jpg"
+              src={men}
               alt="Men's Clothing"
               width={500}
               height={300}
@@ -45,7 +49,7 @@ export default function Categorybrowse() {
               Women's Clothing
             </p>
             <Image
-              src="/images/women 2.jpg"
+              src={women2}
               alt="Women's Clothing"
               width={500}
               height={300}
@@ -59,7 +63,7 @@ export default function Categorybrowse() {
               Jewelries
             </p>
             <Image
-              src="/images/jewelries.jpg"
+              src={jewelries}
               alt="Jewelries"
               width={500}
               height={300}
