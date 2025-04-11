@@ -149,11 +149,11 @@ export default function Cartsection() {
                   <div>Subtotal</div>
                   <div>${subtotal.toFixed(2)}</div>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex pt-5 justify-between">
                   <div>Discount ({averageDiscountPercentage}%)</div>
                   <div className="text-red-600">-${discount.toFixed(2)}</div>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex pt-5 justify-between">
                   <div>Delivery Fee</div>
                   <div>${deliveryFee}</div>
                 </div>
