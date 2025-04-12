@@ -30,9 +30,20 @@ const TopSelling = () => {
 
   return (
     <MainLayout>
-      <div className="text-5xl mt-8 font-satoshi font-extrabold flex justify-center">
+      {/* Breadcrumb */}
+      <div className="flex font-satoshi mt-16 font-semibold p-6 gap-3">
+        <div className="flex items-center gap-1">
+          <div>Home</div> <div> &gt; </div>
+        </div>
+        <div className="flex items-center gap-1">
+          <div>Topselling</div>
+        </div>
+      </div>
+
+      <div className="text-4xl mt-8 font-integral font-extrabold flex justify-center">
         TOP SELLING PRODUCTS
       </div>
+
       <div className="pt-6 flex overflow-x-auto scrollbar-hide space-x-8 px-4">
         {topSelling.map((product) => {
           const discountedPrice = (
