@@ -67,14 +67,14 @@ export default function Navbar() {
   };
 
   return (
-    <div className="flex font-satoshi shadow-lg fixed top-0 left-0 w-full z-10 py-4 px-6 md:px-8 items-center justify-between bg-white">
-      <div className="flex gap-5">
+    <div className="flex font-satoshi shadow-lg fixed top-0 left-0 w-full z-10 px-9 py-7 items-center justify-between bg-white">
+      <div className="flex gap-2">
         <button
-          className="md:hidden items-center"
+          className="md:hidden pt-1.5"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
-          {menuOpen ? <X size={28} /> : <Menu size={28} />}
+          {menuOpen ? <X size={23} /> : <Menu size={23} />}
         </button>
         <div className="font-integral text-3xl font-bold  md:text-3xl">
           SHOP.CO
@@ -155,7 +155,7 @@ export default function Navbar() {
         )}
       </div>
 
-      <div className="flex gap-4">
+      <div className="flex gap-3">
         <button
           className="md:hidden"
           onClick={() => setSearchOpen(!searchOpen)}

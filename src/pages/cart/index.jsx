@@ -59,7 +59,7 @@ export default function Cartsection() {
 
   return (
     <MainLayout>
-      <div className="mx-4 mt-16 md:mx-10 font-satoshi mb-20">
+      <div className="mx-4 mt-24 md:mx-10 font-satoshi mb-20">
         {/* Breadcrumb */}
         <div className="flex font-semibold p-6 gap-3 text-sm md:text-base">
           <div>Home</div>

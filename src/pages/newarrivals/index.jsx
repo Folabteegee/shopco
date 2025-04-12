@@ -33,7 +33,7 @@ const NewArrivals = () => {
   return (
     <MainLayout>
       {/* Breadcrumb */}
-      <div className="flex font-satoshi mt-16 font-semibold p-6 gap-3">
+      <div className="flex font-satoshi mt-24 font-semibold p-6 gap-3">
         <div className="flex items-center gap-1">
           <div>Home</div> <div> &gt; </div>
         </div>

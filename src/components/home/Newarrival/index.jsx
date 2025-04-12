@@ -23,7 +23,7 @@ export default function Newarrival() {
   };
 
   return (
-    <div className="bg-white pb-5 px-4 md:px-20">
+    <div className=" bg-[#F2F0F1] pb-5 px-4 md:px-20">
       {/* Title */}
       <div className="text-3xl md:text-5xl font-bold font-integral pt-10 md:pt-20 text-center">
         NEW ARRIVALS

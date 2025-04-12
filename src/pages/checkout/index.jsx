@@ -33,7 +33,7 @@ export default function Checkout() {
 
   return (
     <MainLayout>
-      <div className="mx-4 md:mx-10 font-satoshi mt-20 mb-20">
+      <div className="mx-4 md:mx-10 font-satoshi mt-28 mb-20">
         <h1 className="text-2xl font-semibold">Checkout</h1>
         <p>Please review your order and enter your shipping details.</p>
 
@@ -65,7 +65,7 @@ export default function Checkout() {
           <h2 className="font-semibold text-xl">Shipping Details</h2>
           {!orderComplete ? (
             <form onSubmit={handleSubmit}>
-              <div className="mb-4">
+              <div className="mb-4 pt-5">
                 <label className="block">Full Name</label>
                 <input
                   type="text"

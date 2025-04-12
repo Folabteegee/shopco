@@ -109,7 +109,7 @@ export default function Herosection() {
       </div>
 
       {/* Brands Section */}
-      <div className="bg-black text-white py-12 px-6 md:px-20 flex flex-wrap justify-evenly gap-8">
+      <div className="bg-black text-white py-12 px-6  flex flex-wrap justify-evenly gap-8">
         <Versace />
         <Zara />
         <Gucci />
