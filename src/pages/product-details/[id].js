@@ -126,7 +126,7 @@ const ProductDetails = () => {
           </div>
 
           <div className="pt-6">
-            <h1 className="font-integral font-bold text-[40px] max-sm:text-[30px]">
+            <h1 className="font-integral font-bold text-[40px] max-sm:text-[20px]">
               {product.title}
             </h1>
             <div className="flex gap-4 items-center pt-4 font-satoshi text-[16px]">
