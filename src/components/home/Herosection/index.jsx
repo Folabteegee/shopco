@@ -49,7 +49,7 @@ export default function Herosection() {
           </div>
           <div className="pt-6 md:pt-8 items-center px-4 md:px-20">
             <a href="/onsale">
-              <button className="font-satoshi  hover:bg-slate-500 hover:text-black rounded-full bg-black text-white max-md:px-40 px-10 py-3">
+              <button className="font-satoshi  hover:bg-slate-500 hover:text-black rounded-full bg-black text-white px-10 py-3">
                 Shop Now
               </button>
             </a>
