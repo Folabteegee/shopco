@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import MainLayout from "@/layouts/MainLayout";
 import Image from "next/image";
 import Delete from "@/icon/Delete";
-import Arrow from "@/icon/arrow";
+import Arrow from "@/icon/Arrow";
 import { useRouter } from "next/router"; // Importing useRouter
 
 export default function Cartsection() {
