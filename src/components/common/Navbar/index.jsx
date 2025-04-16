@@ -67,7 +67,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="flex font-satoshi shadow-lg fixed top-0 left-0 w-full z-10 px-9 py-7 items-center justify-between bg-white">
+    <div className="flex font-satoshi w-screen shadow-lg fixed top-0 left-0  z-10 px-20 max-md:px-12 py-7 items-center justify-between bg-white">
       <div className="flex gap-2">
         <button
           className="md:hidden pt-1.5"

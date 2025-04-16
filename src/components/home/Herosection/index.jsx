@@ -47,9 +47,9 @@ export default function Herosection() {
             designed to bring out your individuality and cater to your sense of
             style.
           </div>
-          <div className="pt-6 md:pt-8 px-4 md:px-20">
+          <div className="pt-6 md:pt-8 items-center px-4 md:px-20">
             <a href="/onsale">
-              <button className="font-satoshi hover:bg-slate-500 hover:text-black rounded-full bg-black text-white max-md:px-40 px-10 py-3">
+              <button className="font-satoshi  hover:bg-slate-500 hover:text-black rounded-full bg-black text-white max-md:px-40 px-10 py-3">
                 Shop Now
               </button>
             </a>
@@ -94,7 +94,7 @@ export default function Herosection() {
           <div className="absolute top-10 left-5 md:top-60">
             <Star />
           </div>
-          <div className="absolute top-10 right-5 md:top-20 md:right-20">
+          <div className="absolute top-10 right-20 max-md:top-[-70px] max-md:right-[10px]">
             <StarII />
           </div>
 
@@ -109,7 +109,7 @@ export default function Herosection() {
       </div>
 
       {/* Brands Section */}
-      <div className="bg-black text-white py-12 px-6  flex flex-wrap justify-evenly gap-8">
+      <div className="bg-black text-white py-12 px-6 max-md:max-w-max  flex flex-wrap justify-evenly gap-8">
         <Versace />
         <Zara />
         <Gucci />
