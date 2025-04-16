@@ -98,7 +98,7 @@ const ProductDetails = () => {
 
   return (
     <MainLayout>
-      <div className="container mt-16 font-satoshi mx-auto px-7 pb-10">
+      <div className="container mt-24 font-satoshi mx-auto px-7 pb-10">
         {/* Breadcrumb */}
         <div className="flex pl-2 font-semibold pt-6 gap-3">
           <div className="flex items-center gap-1">
