@@ -116,7 +116,7 @@ const OnSale = () => {
       </div>
 
       <h1 className="text-4xl font-bold text-center p-9 font-integral mb-6">
-        On Sale
+        ON SALE
       </h1>
 
       {/* Loader */}
