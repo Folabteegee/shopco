@@ -190,7 +190,7 @@ const ProductDetails = () => {
         )}
 
         {/* Write a Review Button */}
-        <div className="flex justify-between px-8 mt-4">
+        <div className="flex justify-between mt-4">
           <div className="flex gap-1 font-satoshi items-center">
             <div className="text-lg font-bold">All Reviews</div>
             <div className="text-xs text-gray-400 pt-1">
